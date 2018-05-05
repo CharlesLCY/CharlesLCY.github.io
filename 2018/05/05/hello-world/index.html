@@ -55,7 +55,7 @@
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="">
     <meta name="keywords" content="Android">
-    <meta name="theme-color" content="#0097A7">
+    <meta name="theme-color" content="#FFC66D">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
     <meta http-equiv="Cache-Control" content="no-transform" />
@@ -100,7 +100,7 @@
   }
 
   a {
-    color: #00838F;
+    color: #FFC66D;
   }
 
   .mdl-card__media,
@@ -110,13 +110,13 @@
   #scheme-Paradox .sidebar_archives-count,
   #scheme-Paradox .sidebar-colored .sidebar-header,
   #scheme-Paradox .sidebar-colored .sidebar-badge{
-    background-color: #0097A7 !important;
+    background-color: #589DF6 !important;
   }
 
   /* Sidebar User Drop Down Menu Text Color */
   #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
   #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
-    color: #0097A7 !important;
+    color: #589DF6 !important;
   }
 
   #post_entry-right-info,
@@ -129,7 +129,7 @@
   .sidebar-colored .sidebar-nav > .open > a:hover,
   .sidebar-colored .sidebar-nav > .open > a:focus,
   #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
-    color: #0097A7 !important;
+    color: #589DF6 !important;
   }
 
   .toTop {
@@ -151,7 +151,7 @@
   }
 
   .post-toc a:hover {
-    color: #00838F;
+    color: #FFC66D;
     text-decoration: underline;
   }
 
@@ -162,7 +162,7 @@
 
     <style>
       body{
-        background-color: #F5F5F5;
+        background-color: #2B2B2B;
       }
 
       /* blog_info bottom background */
@@ -216,7 +216,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Just Do It">
     <meta name="msapplication-starturl" content="http://yoursite.com/2018/05/05/hello-world/">
-    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="msapplication-navbutton-color" content="#FFC66D">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Just Do It">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -503,6 +503,90 @@
                 <!-- Post Comments -->
                 
                     
+    <!-- 使用 DISQUS_CLICK -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+
+<!-- add animation -->
+<style>
+	.disqus_click_btn {
+            line-height: 30px;
+            margin: 0;
+            min-width: 50px;
+            padding: 0 14px;
+            display: inline-block;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            overflow: hidden;
+            will-change: box-shadow;
+            transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1), color .2s cubic-bezier(.4, 0, .2, 1);
+            outline: 0;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            vertical-align: middle;
+            border: 0;
+            background: rgba(158, 158, 158, .2);
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+            color: #fff;
+            background-color: #757575;
+            text-shadow: 0;
+            display: none
+        }
+</style>
+	
+<div class="btn_click_load"> 
+    <button class="disqus_click_btn">Read Comments (Make sure disq.us, disquscdn.com and disqus.com can load properly)</button>
+</div>
+
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2018/05/05/hello-world/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2018/05/05/hello-world/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+
+<script type="text/ls-javascript" id="disqus-lazy-load-script">
+    $.ajax({
+        url: 'https://disqus.com/next/config.json',
+        timeout: 4000,
+        type: 'GET',
+        success: (function() {
+            var d = document;
+            var s = d.createElement('script');
+            s.src = '//charleslcy.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', + new Date());
+            (d.head || d.body).appendChild(s);
+            $('.disqus_click_btn').css('display','none');
+        })(),
+        error: function() {
+          $('.disqus_click_btn').css('display','block');
+        }
+    });
+    $('.btn_click_load').click(function() {  //click to load comments
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document;
+            var s = d.createElement('script');
+            s.src = '//charleslcy.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', + new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+        $('.disqus_click_btn').css('display','none');
+    });
+</script>
+  	
+
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
                 
             </div>
 
@@ -531,7 +615,7 @@
 <aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
     <div id="sidebar-main">
         <!-- Sidebar Header -->
-        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.jpg);">
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.jpeg);">
     <!-- Top bar -->
     <div class="top-bar"></div>
 
@@ -551,7 +635,7 @@
 
     <!-- Sidebar Email -->
     <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
-        youremail@email.com
+        15708478830@163.com
         <b class="caret"></b>
     </a>
 </div>
@@ -564,7 +648,7 @@
         <ul id="settings-dropdown" class="dropdown-menu">
             
                 <li>
-                    <a href="#" target="_blank" title="Email Me">
+                    <a href="mailto: 15708478830@163.com" target="_blank" title="Email Me">
                         
                             <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
                         
@@ -608,11 +692,46 @@
 
     <!-- Categories  -->
     
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                Categories
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                
+            </ul>
+        </li>
+        
+    
 
     <!-- Pages  -->
     
+        <li>
+            <a href="#about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+    
 
     <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                Number of articles
+                <span class="sidebar-badge">1</span>
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
     
 </ul>
 
@@ -630,17 +749,8 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Sidebar Divider -->
 
-    <div class="sidebar-divider"></div>
-
 
 <!-- Theme Material -->
-
-    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
-        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-            Theme - Material
-            <span class="sidebar-badge badge-circle">i</span>
-        </div>
-    </a>
 
 
 <!-- Help & Support -->
@@ -719,6 +829,12 @@ It will not impact the appearance and can give developers a lot of support :)
     
 
     <!-- Github -->
+    
+        <a href="15708478830@163.com" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
     
 
     <!-- LinkedIn -->
@@ -804,6 +920,9 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 
+
+
+   <!-- 使用 DISQUS js 代码 -->
 
 
 
