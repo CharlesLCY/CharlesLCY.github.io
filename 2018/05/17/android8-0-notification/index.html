@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <link rel="canonical" href="https://www.lichaoyu.com/2018/05/17/android8-0-notification/">
+    
+    
+    <title>Android8.0通知适配（NotificationChannel） | Born To Do</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Android8.0,Notification">
+    <link rel="shortcut icon" href="/img/favicon.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.2.8">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpeg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Charlie</h5>
+          <a href="mailto:15708478830@163.com" title="15708478830@163.com" class="mail">
+            
+              <span>1</span>
+            
+              <span>5</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>8</span>
+            
+              <span>4</span>
+            
+              <span>7</span>
+            
+              <span>8</span>
+            
+              <span>8</span>
+            
+              <span>3</span>
+            
+              <span>0</span>
+            
+              <span>@</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>3</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/CharlesLCY" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://weibo.com/2757664455/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank">
+                  <i class="icon icon-lg icon-weibo"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                ABOUT
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-plus-square"></i>
+                CUSTOM
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>Android8.0通知适配（NotificationChannel）</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpeg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">Android8.0通知适配（NotificationChannel）</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-17T05:10:37.000Z" itemprop="datePublished" class="page-time">
+  2018-05-17
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-android8-0-notification"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">Android8.0通知适配（NotificationChannel）</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-17 13:10:37" datetime="2018-05-17T05:10:37.000Z"  itemprop="datePublished">2018-05-17</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="Android8-0-NotificationCannel"><a href="#Android8-0-NotificationCannel" class="headerlink" title="Android8.0 NotificationCannel"></a>Android8.0 NotificationCannel</h2><p>NotificationCannel是Android8.0的新特性，如果App的targetSDKVersion&gt;=26，没有设置channel通知渠道的话，就会导致通知无法展示。</p>
+<blockquote>
+<p>Android O 引入了 通知渠道（Notification Channels），以提供统一的系统来帮助用户管理通知，如果是针对 android O 为目标平台时，必须实现一个或者多个通知渠道，以向用户显示通知。比如聊天软件，为每个聊天组设置一个通知渠道，指定特定声音、灯光等配置。</p>
+</blockquote>
+<blockquote>
+<p>国内app基本都集成了第三方推送SDK，目前使用的两个推送平台都还没进行适配，所以还需要等第三方出新版本并集成，如果我们app内部也有自己弹出通知逻辑，最好和他们保持一致，毕竟app内设置多个通知渠道不方便维护。</p>
+</blockquote>
+<p>报错内容：</p>
+<p><strong>Failed to post notification on channel “null” Target Api is 26</strong></p>
+<p>解决方案：</p>
+<p>下面是一个通知管理类，包含Android8.0通知处理逻辑，仅供参考。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NotificationUtils</span> <span class="keyword">extends</span> <span class="title">ContextWrapper</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> NotificationManager manager;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> NOTIFICATION_ID = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String CHANNEL_ID = <span class="string">"channel_1"</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String CHANNEL_NAME = <span class="string">"channel_name_1"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">NotificationUtils</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequiresApi</span>(api = Build.VERSION_CODES.O)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">createNotificationChannel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        NotificationChannel channel = <span class="keyword">new</span> NotificationChannel(CHANNEL_ID, CHANNEL_NAME,</span><br><span class="line">                NotificationManager.IMPORTANCE_HIGH);</span><br><span class="line">        channel.enableLights(<span class="keyword">true</span>); <span class="comment">//是否在桌面icon右上角展示小红点</span></span><br><span class="line">        channel.setLightColor(Color.GREEN); <span class="comment">//小红点颜色</span></span><br><span class="line">        channel.setShowBadge(<span class="keyword">true</span>); <span class="comment">//是否在久按桌面图标时显示此渠道的通知</span></span><br><span class="line">        getManager().createNotificationChannel(channel);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> NotificationManager <span class="title">getManager</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (manager == <span class="keyword">null</span>) &#123;</span><br><span class="line">            manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> manager;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequiresApi</span>(api = Build.VERSION_CODES.O)</span><br><span class="line">    <span class="keyword">public</span> NotificationCompat.<span class="function">Builder <span class="title">getChannelNotification</span><span class="params">(String title, String content)</span> </span>&#123;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(getApplicationContext(), MainActivity.class);</span><br><span class="line">        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</span><br><span class="line">        PendingIntent pi = PendingIntent.getActivity(<span class="keyword">this</span>, <span class="number">0</span>, intent, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)</span><br><span class="line">                .setContentTitle(title)</span><br><span class="line">                .setContentText(content)</span><br><span class="line">                .setSmallIcon(android.R.drawable.stat_notify_more)</span><br><span class="line">                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.logo))</span><br><span class="line">                .setWhen(System.currentTimeMillis())</span><br><span class="line">                .setContentIntent(pi)</span><br><span class="line">                .setPriority(NotificationCompat.PRIORITY_HIGH)</span><br><span class="line">                .setDefaults(NotificationCompat.DEFAULT_SOUND | NotificationCompat.DEFAULT_VIBRATE)</span><br><span class="line">                .setAutoCancel(<span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> NotificationCompat.<span class="function">Builder <span class="title">getNotification_25</span><span class="params">(String title, String content)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> NotificationCompat.Builder(getApplicationContext())</span><br><span class="line">                .setContentTitle(title)</span><br><span class="line">                .setContentText(content)</span><br><span class="line">                .setSmallIcon(android.R.drawable.stat_notify_more)</span><br><span class="line">                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.logo))</span><br><span class="line">                .setWhen(System.currentTimeMillis())</span><br><span class="line">                .setPriority(NotificationCompat.PRIORITY_HIGH)</span><br><span class="line">                .setDefaults(NotificationCompat.DEFAULT_SOUND | NotificationCompat.DEFAULT_VIBRATE)</span><br><span class="line">                .setAutoCancel(<span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 初始化NotificationCompat.Builder</span></span><br><span class="line"><span class="comment">     * 适配android 8.0</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> NotificationCompat.<span class="function">Builder <span class="title">getNotification</span><span class="params">(String title, String content,</span></span></span><br><span class="line"><span class="function"><span class="params">                                                      NotificationItem item)</span> </span>&#123;</span><br><span class="line">        NotificationCompat.Builder builder;</span><br><span class="line">        <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.O) &#123;</span><br><span class="line">            createNotificationChannel();</span><br><span class="line">            builder = <span class="keyword">new</span> NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            builder = <span class="keyword">new</span> NotificationCompat.Builder(getApplicationContext());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        builder.setContentTitle(title)</span><br><span class="line">                .setContentText(content)</span><br><span class="line">                .setSmallIcon(android.R.drawable.stat_notify_more)</span><br><span class="line">                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.logo))</span><br><span class="line">                .setWhen(System.currentTimeMillis())</span><br><span class="line">                .setPriority(NotificationCompat.PRIORITY_HIGH)</span><br><span class="line">                .setDefaults(NotificationCompat.DEFAULT_SOUND | NotificationCompat</span><br><span class="line">                        .DEFAULT_VIBRATE) <span class="comment">// 设置默认铃声与震动</span></span><br><span class="line">                .setFullScreenIntent(initPendingIntent(item), <span class="keyword">true</span>)  <span class="comment">//悬挂式通知</span></span><br><span class="line">                .setContentIntent(initPendingIntent(item))</span><br><span class="line">                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC) <span class="comment">// 锁屏通知，显示通知全部内容</span></span><br><span class="line">                .setAutoCancel(<span class="keyword">true</span>);</span><br><span class="line">        <span class="keyword">return</span> builder;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 点击通知后跳转意图，开发者可自行定义item类，根据不同的type处理各业务逻辑，如相应跳转等。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> PendingIntent <span class="title">initPendingIntent</span><span class="params">(NotificationItem item)</span> </span>&#123;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(getApplicationContext(), MainActivity.class);</span><br><span class="line">        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</span><br><span class="line">        PendingIntent pi = PendingIntent.getActivity(<span class="keyword">this</span>, <span class="number">0</span>, intent, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> pi;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 显示通知</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendNotification</span><span class="params">(String title, String content, NotificationItem item)</span> </span>&#123;</span><br><span class="line">        Notification notification = getNotification(title, content, item).build();</span><br><span class="line">        getManager().notify(NOTIFICATION_ID, notification);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 取消通知</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cancelNotification</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.O) &#123;</span><br><span class="line">            getManager().deleteNotificationChannel(CHANNEL_ID);</span><br><span class="line">        &#125;</span><br><span class="line">        getManager().cancel(NOTIFICATION_ID);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>管理类具体使用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NotificationUtils notificationUtils = <span class="keyword">new</span> NotificationUtils(<span class="keyword">this</span>);</span><br><span class="line">notificationUtils.sendNotification(<span class="string">"通知标题"</span>, <span class="string">"通知内容"</span>, entity);</span><br></pre></td></tr></table></figure>
+<h2 id="Android-Notification-四种方式"><a href="#Android-Notification-四种方式" class="headerlink" title="Android Notification 四种方式"></a>Android Notification 四种方式</h2><ul>
+<li>普通通知</li>
+<li>悬挂式通知</li>
+<li>折叠通知</li>
+<li>锁屏通知</li>
+</ul>
+<p>未完待续。。</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-05-17T06:07:48.764Z" itemprop="dateUpdated">2018-05-17 14:07:48</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2018/05/17/android8-0-notification/" target="_blank" rel="external">http://lichaoyu.com/2018/05/17/android8-0-notification/</a>
+        
+    </div>
+    <footer>
+        <a href="http://lichaoyu.com">
+            <img src="/img/avatar.png" alt="Charlie">
+            Charlie
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android8-0/">Android8.0</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Notification/">Notification</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lichaoyu.com/2018/05/17/android8-0-notification/&title=《Android8.0通知适配（NotificationChannel）》 — Born To Do&pic=http://lichaoyu.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lichaoyu.com/2018/05/17/android8-0-notification/&title=《Android8.0通知适配（NotificationChannel）》 — Born To Do&source=There is nothing you can complain about, it all depends on human effort." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lichaoyu.com/2018/05/17/android8-0-notification/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android8.0通知适配（NotificationChannel）》 — Born To Do&url=http://lichaoyu.com/2018/05/17/android8-0-notification/&via=http://lichaoyu.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lichaoyu.com/2018/05/17/android8-0-notification/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2018/05/13/ES6的十大特性/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">ES6的十大特性</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Android8-0-NotificationCannel"><span class="post-toc-number">1.</span> <span class="post-toc-text">Android8.0 NotificationCannel</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Android-Notification-四种方式"><span class="post-toc-number">2.</span> <span class="post-toc-text">Android Notification 四种方式</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        There is nothing we can complain about, it all depends on what we do.
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="/" target="_blank">HOME</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.gitee.com" target="_blank">gitee</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.coding.net" target="_blank">coding</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Charlie &copy; 2018
+            </span>
+        		
+           	
+            
+            
+            
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lichaoyu.com/2018/05/17/android8-0-notification/&title=《Android8.0通知适配（NotificationChannel）》 — Born To Do&pic=http://lichaoyu.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lichaoyu.com/2018/05/17/android8-0-notification/&title=《Android8.0通知适配（NotificationChannel）》 — Born To Do&source=There is nothing you can complain about, it all depends on human effort." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lichaoyu.com/2018/05/17/android8-0-notification/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android8.0通知适配（NotificationChannel）》 — Born To Do&url=http://lichaoyu.com/2018/05/17/android8-0-notification/&via=http://lichaoyu.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lichaoyu.com/2018/05/17/android8-0-notification/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMklEQVR42u3aS47cMAwFwL7/pTubLAaY2Hqk7ACmy6sG/JGqFwRJ8fOJr+/p9fOZ388f3T1f5XPHhYGB8VhGvsWju8km8neTdf+xCgYGxgsYRwvnwbS6uWqYXuwZAwMDI34m2WIesjEwMDD2A+4iXSuWrBgYGBjnjLyVtl+UJqvfWItjYGA8kJF33f//71vONzAwMB7F+BavJGhWG2o7+/n7HQwMjNGMPMAlqVt1YKJa9C6OSzEwMF7AOC9He839atitHo6WpzkwMDAeyOgBemVnzs5XOcxwMTAwRjOiCH16Nz+GzMP6Yl0MDIzXMAoBrnW32p5r5rYYGBjjGNUDy96hZh6yL9g6BgbGOMbOsFeeCO5vdPEWBgbGaEY+7tA7dKwOnubjqouvYWBgjGPsDH4VmmJFWPLXFCpjDAyM0Yydka/8m9UUEAMDAyPPKK89DKg2/i5IDTEwMB7CqKZi1fq4V1VXDxUwMDBmM3ol6B3P528dttswMDCGMnYGKXYmO6opaXUoFgMDYxLjjsCaLJ8/H2EwMDBewKgmar3g2AM34zcGBsY4Rv5yHnC3StBqKomBgTGU8S1eeajtjav20koMDIzZjF6wy0cu9ke+rm3wYWBgPJdRDbLVUbCromJ0YImBgTGa0etfJYlgMliWgw+fxMDAwIgL12rArYZyDAwMjB5jp62ft/MWIR4DA+MFjKSIvXbYqxq+F38iBgbGaEa1dNwpR3ujY/ulLwYGxmMZfwBXanRy6wqjRwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.2.8"></script>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.2.8"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.2.8"></script>
+
+<!-- third-party -->
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.2.8"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+    <script>
+    (function() {
+        var OriginTitile = document.title, titleTime;
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                document.title = 'Where are you?';
+                clearTimeout(titleTime);
+            } else {
+                document.title = 'Welcome back!';
+                titleTime = setTimeout(function() {
+                    document.title = OriginTitile;
+                },2000);
+            }
+        });
+    })();
+</script>
+
+
+    
+</body>
+</html>
