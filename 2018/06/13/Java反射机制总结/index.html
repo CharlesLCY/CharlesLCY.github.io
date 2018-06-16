@@ -6,10 +6,10 @@
     <link rel="canonical" href="https://www.lichaoyu.com/2018/06/13/Java反射机制总结/">
     
     
-    <title>post | Born To Do</title>
+    <title>Java反射机制总结 | Born To Do</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="">
+    <meta name="keywords" content="Java,Reflection">
     <link rel="shortcut icon" href="/img/favicon.png">
     <link rel="stylesheet" href="/css/style.css?v=1.2.8">
     
@@ -164,7 +164,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>post</span>
+            <span>Java反射机制总结</span>
             
         </div>
         
@@ -177,13 +177,15 @@
 <header class="content-header post-header">
     <img src="/img/banner.jpeg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">post</h1>
+        <h1 class="title">Java反射机制总结</h1>
         <h5 class="subtitle">
             
                 <time datetime="2018-06-13T05:04:46.000Z" itemprop="datePublished" class="page-time">
   2018-06-13
 </time>
 
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
 
             
         </h5>
@@ -211,11 +213,13 @@
     <article id="post-Java反射机制总结"
   class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
-        <h1 class="post-card-title">post</h1>
+        <h1 class="post-card-title">Java反射机制总结</h1>
         <div class="post-meta">
             <time class="post-time" title="2018-06-13 13:04:46" datetime="2018-06-13T05:04:46.000Z"  itemprop="datePublished">2018-06-13</time>
 
             
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
 
 
             
@@ -227,14 +231,67 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            
+            <h2 id="Java反射机制总结"><a href="#Java反射机制总结" class="headerlink" title="Java反射机制总结"></a>Java反射机制总结</h2><h3 id="反射的概念"><a href="#反射的概念" class="headerlink" title="反射的概念"></a>反射的概念</h3><p>在Java中程序可以访问、检测和修改它自身状态或行为的一种能力。简单来说，就是只要给定类的名字，就可以知道这个类的所有属性和方法，这种动态获取信息以及动态调用对象方法的功能成为Java语言的反射机制。</p>
+<h3 id="反射的作用"><a href="#反射的作用" class="headerlink" title="反射的作用"></a>反射的作用</h3><ol>
+<li>在运行时判断任意一个对象所属的类；</li>
+<li>在运行时获取类的对象；</li>
+<li>在运行时访问Java对象的属性，方法以及构造方法等。</li>
+</ol>
+<h3 id="反射的优缺点"><a href="#反射的优缺点" class="headerlink" title="反射的优缺点"></a>反射的优缺点</h3><p>优点：</p>
+<p>可以实现动态创建对象和编译，最大限度发挥了Java的灵活性，体现了多态的应用，有以降低类之间的藕合性。</p>
+<p>缺点：</p>
+<p>（1）对性能有影响。</p>
+<p>（2）使用反射相对来说不安全。</p>
+<p>（3）破坏了类的封装性，可以通过反射获取这个类的私有方法和属性。</p>
+<h3 id="使用注意事项"><a href="#使用注意事项" class="headerlink" title="使用注意事项"></a>使用注意事项</h3><p><strong>性能第一：</strong>反射包括了一些动态类型，所以JVM无法对这些代码进行优化。因此，反射操作的效率要比那些非反射操作低得多。我们应该避免在经常被 执行的代码或对性能要求很高的程序中使用反射。</p>
+<p><strong>安全限制：</strong>使用反射技术要求程序必须在一个没有安全限制的环境中运行。</p>
+<p><strong>内部暴露：</strong>由于反射允许代码执行一些在正常情况下不被允许的操作（比如访问私有的属性和方法），所以使用反射可能会导致意料之外的副作用——代码有功能上的错误，降低可移植性。反射代码破坏了抽象性，因此当平台发生改变的时候，代码的行为就有可能也随着变化。</p>
+<h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><hr>
+<h4 id="关于Class"><a href="#关于Class" class="headerlink" title="关于Class"></a>关于Class</h4><blockquote>
+<ol>
+<li>Class是一个类，一个描述类的类（也就是描述类本身），封装了描述方法的Method，描述字段的Filed，描述构造器的Constructor等属性    </li>
+<li>对象照镜子后（反射）可以得到的信息：某个类的数据成员名、方法和构造器、某个类到底实现了哪些接口。     </li>
+<li>对于每个类而言，JRE 都为其保留一个不变的 Class 类型的对象。一个 Class 对象包含了特定某个类的有关信息。    </li>
+<li>Class 对象只能由系统建立对象     </li>
+<li>一个类在 JVM 中只会有一个Class实例</li>
+</ol>
+</blockquote>
+<h4 id="获取Class有三种方法"><a href="#获取Class有三种方法" class="headerlink" title="获取Class有三种方法"></a>获取Class有三种方法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Class clazz = <span class="keyword">null</span>;</span><br><span class="line"><span class="comment">// 1.直接通过类名.class的方式得到</span></span><br><span class="line">clazz = Test.class;</span><br><span class="line"><span class="comment">// 2.通过对象的getClass()方法获取</span></span><br><span class="line">Object obj = <span class="keyword">new</span> Test();</span><br><span class="line">clazz = obj.getClass();</span><br><span class="line"><span class="comment">// 3.通过全类名获取，用的比较多，但可能抛出ClassNotFoundException异常</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    clazz = Class.forName(<span class="string">"com.lcy.demo.reflection.Test"</span>);</span><br><span class="line">    System.out.println(<span class="string">"通过全类名获取:"</span> + clazz);</span><br><span class="line">&#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="利用newInstance创建对象：调用的类必须有无参构造器"><a href="#利用newInstance创建对象：调用的类必须有无参构造器" class="headerlink" title="利用newInstance创建对象：调用的类必须有无参构造器"></a>利用newInstance创建对象：调用的类必须有无参构造器</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Class clazz = Class.forName(<span class="string">"com.java.reflection.Person"</span>);  </span><br><span class="line"><span class="comment">//使用Class类的newInstance()方法创建类的一个对象  </span></span><br><span class="line"><span class="comment">//实际调用的类的那个 无参数的构造器（这就是为什么写的类的时候，要写一个无参数的构造器，就是给反射用的）  </span></span><br><span class="line"><span class="comment">//一般的，一个类若声明了带参数的构造器，也要声明一个无参数的构造器  </span></span><br><span class="line">Object obj = clazz.newInstance();  </span><br><span class="line">System.out.println(obj);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>输出 Person{name=’null’, age=0}</p>
+</blockquote>
+<h4 id="Java类加载器"><a href="#Java类加载器" class="headerlink" title="Java类加载器"></a>Java类加载器</h4><figure class="image-box">
+                <img src="/Users/cy/Charles_lcy/Blog/source/_images/classloader.png" alt="" title="" class="">
+                <p></p>
+            </figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取一个系统的类加载器</span></span><br><span class="line">ClassLoader classLoader = ClassLoader.getSystemClassLoader();</span><br><span class="line">System.out.println(<span class="string">"系统类加载器："</span> + classLoader);</span><br><span class="line"><span class="comment">// 获取系统类加载器的父类加载器（扩展加载器）</span></span><br><span class="line">classLoader = classLoader.getParent();</span><br><span class="line">System.out.println(<span class="string">"扩展加载器："</span> + classLoader);</span><br><span class="line"><span class="comment">// 获取扩展加载器的父类加载器</span></span><br><span class="line"><span class="comment">// 输出为NULL，无法被Java程序直接引用</span></span><br><span class="line">classLoader = classLoader.getParent();</span><br><span class="line">System.out.println(<span class="string">"启动类加载器"</span> + classLoader);</span><br><span class="line"><span class="comment">// 测试当前类由哪个加载器加载，结果就是系统的类加载器</span></span><br><span class="line">classLoader = Class.forName(<span class="string">"com.lcy.demo.reflection.Test"</span>).getClassLoader();</span><br><span class="line">System.out.println(<span class="string">"当前类由哪个类加载："</span> + classLoader);</span><br><span class="line"><span class="comment">// 测试JDK提供的Object类由哪个类加载器加载</span></span><br><span class="line">classLoader = Class.forName(<span class="string">"java.lang.Object"</span>).getClassLoader();</span><br><span class="line">System.out.println(<span class="string">"Object类由哪个类加载："</span> + classLoader);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>系统的类加载器–&gt;sun.misc.LauncherAppClassLoader@43be2d65 </p>
+<p>扩展类加载器–&gt;sun.misc.LauncherExtClassLoader@7a9664a1 </p>
+<p>启动类加载器–&gt;null </p>
+<p>当前类由哪个类加载器进行加载–&gt;sun.misc.Launcher$AppClassLoader@43be2d65 </p>
+<p>JDK提供的Object类由哪个类加载器加载–&gt;null</p>
+</blockquote>
+<p><strong>getResourceAsStream()：</strong>类加载器的一个主要方法，获取类路径下的文件对应的输入流。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">InputStream in = classLoader.getResourceAsStream(<span class="string">"com/lcy/demo/reflection/test.properties"</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Properties properties = <span class="keyword">new</span> Properties();</span><br><span class="line">            properties.load(in);</span><br><span class="line">            System.out.println(properties.getProperty(<span class="string">"driver"</span>));</span><br><span class="line">            System.out.println(<span class="keyword">new</span> String(properties.getProperty(<span class="string">"user"</span>).getBytes(<span class="string">"ISO-8859-1"</span>), <span class="string">"UTF-8"</span>));</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Method：类中方法"><a href="#Method：类中方法" class="headerlink" title="Method：类中方法"></a>Method：类中方法</h4><p>获取clazz对应类中除私有方法外的所有方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Method[] methods = clazz.getMethods();</span><br></pre></td></tr></table></figure>
+<p>获取clazz当前类中声明的所有方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Method[] declaredMethods = clazz.getDeclaredMethods();</span><br></pre></td></tr></table></figure>
+<p>获取指定方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Method method = clazz.getDeclaredMethod(<span class="string">"setName"</span>, String.class);</span><br></pre></td></tr></table></figure>
+<h4 id="Invoke"><a href="#Invoke" class="headerlink" title="Invoke()"></a>Invoke()</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Method method = clazz.getDeclaredMethod(<span class="string">"privateMethod"</span>);</span><br><span class="line"><span class="comment">// 通过反射执行private方法 </span></span><br><span class="line">method.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">Object obj = clazz.newInstance();</span><br><span class="line">method.invoke(obj, <span class="string">"lcy"</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="Field字段"><a href="#Field字段" class="headerlink" title="Field字段"></a>Field字段</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.1 获取Field的数组,私有字段也能获取  </span></span><br><span class="line">Field[] fields = clazz.getDeclaredFields();  </span><br><span class="line"><span class="comment">//1.2 获取指定名字的Field（如果是私有的，见下面的4)  </span></span><br><span class="line">Field field = clazz.getDeclaredField(<span class="string">"name"</span>);  </span><br><span class="line">Person person = <span class="keyword">new</span> Person(<span class="string">"ABC"</span>, <span class="number">12</span>);  </span><br><span class="line"><span class="comment">//2、获取指定对象的Field的值  </span></span><br><span class="line">Object val = field.get(person);    </span><br><span class="line"><span class="comment">//3、设置指定对象的Field的值  </span></span><br><span class="line">field.set(person, <span class="string">"changwen2"</span>);  </span><br><span class="line"><span class="comment">//4、若该字段是私有的，需要调用setAccessible(true)方法  </span></span><br><span class="line">Field field2 = clazz.getDeclaredField(<span class="string">"age"</span>);  </span><br><span class="line">field2.setAccessible(<span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="构造器-Constructor"><a href="#构造器-Constructor" class="headerlink" title="构造器(Constructor)"></a>构造器(Constructor)</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.获取Constructor对象 </span></span><br><span class="line">Constructor&lt;Person&gt; constructor = clazz.getConstructor(String.class, Integer.class);  </span><br><span class="line"><span class="comment">//2.调用构造器的newInstance()方法创建对象  </span></span><br><span class="line">Object obj= constructor.newInstance(<span class="string">"changwen"</span>, <span class="number">11</span>);</span><br></pre></td></tr></table></figure>
+
         </div>
         
 <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-06-13T05:04:46.826Z" itemprop="dateUpdated">2018-06-13 13:04:46</time>
+    Last updated: <time datetime="2018-06-16T03:44:34.999Z" itemprop="dateUpdated">2018-06-16 11:44:34</time>
 </span><br>
 
 
@@ -259,6 +316,8 @@
         
         <div class="post-footer">
             
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reflection/">Reflection</a></li></ul>
+
             <div class="page-share-wrap">
     
 
@@ -266,7 +325,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lichaoyu.com/2018/06/13/Java反射机制总结/&title=《post》 — Born To Do&pic=http://lichaoyu.com/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lichaoyu.com/2018/06/13/Java反射机制总结/&title=《Java反射机制总结》 — Born To Do&pic=http://lichaoyu.com/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -278,7 +337,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lichaoyu.com/2018/06/13/Java反射机制总结/&title=《post》 — Born To Do&source=There is nothing you can complain about, it all depends on human effort." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lichaoyu.com/2018/06/13/Java反射机制总结/&title=《Java反射机制总结》 — Born To Do&source=There is nothing you can complain about, it all depends on human effort." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -290,7 +349,7 @@
       </li>
       
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《post》 — Born To Do&url=http://lichaoyu.com/2018/06/13/Java反射机制总结/&via=http://lichaoyu.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java反射机制总结》 — Born To Do&url=http://lichaoyu.com/2018/06/13/Java反射机制总结/&via=http://lichaoyu.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -334,6 +393,14 @@
 
 
     
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Java反射机制总结"><span class="post-toc-number">1.</span> <span class="post-toc-text">Java反射机制总结</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#反射的概念"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">反射的概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#反射的作用"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">反射的作用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#反射的优缺点"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">反射的优缺点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用注意事项"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">使用注意事项</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用示例"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">使用示例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#关于Class"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">关于Class</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#获取Class有三种方法"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">获取Class有三种方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#利用newInstance创建对象：调用的类必须有无参构造器"><span class="post-toc-number">1.5.3.</span> <span class="post-toc-text">利用newInstance创建对象：调用的类必须有无参构造器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Java类加载器"><span class="post-toc-number">1.5.4.</span> <span class="post-toc-text">Java类加载器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Method：类中方法"><span class="post-toc-number">1.5.5.</span> <span class="post-toc-text">Method：类中方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Invoke"><span class="post-toc-number">1.5.6.</span> <span class="post-toc-text">Invoke()</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Field字段"><span class="post-toc-number">1.5.7.</span> <span class="post-toc-text">Field字段</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#构造器-Constructor"><span class="post-toc-number">1.5.8.</span> <span class="post-toc-text">构造器(Constructor)</span></a></li></ol></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
     
 </article>
 
@@ -416,7 +483,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lichaoyu.com/2018/06/13/Java反射机制总结/&title=《post》 — Born To Do&pic=http://lichaoyu.com/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lichaoyu.com/2018/06/13/Java反射机制总结/&title=《Java反射机制总结》 — Born To Do&pic=http://lichaoyu.com/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -428,7 +495,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lichaoyu.com/2018/06/13/Java反射机制总结/&title=《post》 — Born To Do&source=There is nothing you can complain about, it all depends on human effort." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lichaoyu.com/2018/06/13/Java反射机制总结/&title=《Java反射机制总结》 — Born To Do&source=There is nothing you can complain about, it all depends on human effort." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -440,7 +507,7 @@
       </li>
       
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《post》 — Born To Do&url=http://lichaoyu.com/2018/06/13/Java反射机制总结/&via=http://lichaoyu.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java反射机制总结》 — Born To Do&url=http://lichaoyu.com/2018/06/13/Java反射机制总结/&via=http://lichaoyu.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
