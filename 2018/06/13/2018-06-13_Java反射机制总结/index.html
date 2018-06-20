@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     
-    <link rel="canonical" href="https://www.lichaoyu.com/2018/06/13/Java反射机制总结/">
+    <link rel="canonical" href="https://www.lichaoyu.com/2018/06/13/2018-06-13_Java反射机制总结/">
     
     
     <title>Java反射机制总结 | Born To Do</title>
@@ -210,7 +210,7 @@
 
 
 <div class="container body-wrap">
-    <article id="post-Java反射机制总结"
+    <article id="post-2018-06-13_Java反射机制总结"
   class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
         <h1 class="post-card-title">Java反射机制总结</h1>
@@ -262,8 +262,8 @@
 <p>输出 Person{name=’null’, age=0}</p>
 </blockquote>
 <h4 id="Java类加载器"><a href="#Java类加载器" class="headerlink" title="Java类加载器"></a>Java类加载器</h4><figure class="image-box">
-                <img src="/Users/cy/Charles_lcy/Blog/source/_images/classloader.png" alt="" title="" class="">
-                <p></p>
+                <img src="/2018/06/13/2018-06-13_Java反射机制总结/classloader.png" alt="类加载器示例图" title="" class="">
+                <p>类加载器示例图</p>
             </figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取一个系统的类加载器</span></span><br><span class="line">ClassLoader classLoader = ClassLoader.getSystemClassLoader();</span><br><span class="line">System.out.println(<span class="string">"系统类加载器："</span> + classLoader);</span><br><span class="line"><span class="comment">// 获取系统类加载器的父类加载器（扩展加载器）</span></span><br><span class="line">classLoader = classLoader.getParent();</span><br><span class="line">System.out.println(<span class="string">"扩展加载器："</span> + classLoader);</span><br><span class="line"><span class="comment">// 获取扩展加载器的父类加载器</span></span><br><span class="line"><span class="comment">// 输出为NULL，无法被Java程序直接引用</span></span><br><span class="line">classLoader = classLoader.getParent();</span><br><span class="line">System.out.println(<span class="string">"启动类加载器"</span> + classLoader);</span><br><span class="line"><span class="comment">// 测试当前类由哪个加载器加载，结果就是系统的类加载器</span></span><br><span class="line">classLoader = Class.forName(<span class="string">"com.lcy.demo.reflection.Test"</span>).getClassLoader();</span><br><span class="line">System.out.println(<span class="string">"当前类由哪个类加载："</span> + classLoader);</span><br><span class="line"><span class="comment">// 测试JDK提供的Object类由哪个类加载器加载</span></span><br><span class="line">classLoader = Class.forName(<span class="string">"java.lang.Object"</span>).getClassLoader();</span><br><span class="line">System.out.println(<span class="string">"Object类由哪个类加载："</span> + classLoader);</span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -291,12 +291,12 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-06-16T03:44:34.999Z" itemprop="dateUpdated">2018-06-16 11:44:34</time>
+    Last updated: <time datetime="2018-06-20T06:28:22.340Z" itemprop="dateUpdated">2018-06-20 14:28:22</time>
 </span><br>
 
 
         
-        转载注明出处，原文地址：<a href="/2018/06/13/Java反射机制总结/" target="_blank" rel="external">http://lichaoyu.com/2018/06/13/Java反射机制总结/</a>
+        转载注明出处，原文地址：<a href="/2018/06/13/2018-06-13_Java反射机制总结/" target="_blank" rel="external">http://lichaoyu.com/2018/06/13/2018-06-13_Java反射机制总结/</a>
         
     </div>
     <footer>
@@ -325,7 +325,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lichaoyu.com/2018/06/13/Java反射机制总结/&title=《Java反射机制总结》 — Born To Do&pic=http://lichaoyu.com/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lichaoyu.com/2018/06/13/2018-06-13_Java反射机制总结/&title=《Java反射机制总结》 — Born To Do&pic=http://lichaoyu.com/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -337,25 +337,25 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lichaoyu.com/2018/06/13/Java反射机制总结/&title=《Java反射机制总结》 — Born To Do&source=There is nothing you can complain about, it all depends on human effort." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lichaoyu.com/2018/06/13/2018-06-13_Java反射机制总结/&title=《Java反射机制总结》 — Born To Do&source=There is nothing you can complain about, it all depends on human effort." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lichaoyu.com/2018/06/13/Java反射机制总结/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lichaoyu.com/2018/06/13/2018-06-13_Java反射机制总结/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java反射机制总结》 — Born To Do&url=http://lichaoyu.com/2018/06/13/Java反射机制总结/&via=http://lichaoyu.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java反射机制总结》 — Born To Do&url=http://lichaoyu.com/2018/06/13/2018-06-13_Java反射机制总结/&via=http://lichaoyu.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lichaoyu.com/2018/06/13/Java反射机制总结/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lichaoyu.com/2018/06/13/2018-06-13_Java反射机制总结/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -378,7 +378,14 @@
         
     </div>
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2018/06/19/2018-06-19_Android推送分析/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Android推送分析</h4>
+      </a>
+    </div>
   
 
   
@@ -483,7 +490,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lichaoyu.com/2018/06/13/Java反射机制总结/&title=《Java反射机制总结》 — Born To Do&pic=http://lichaoyu.com/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lichaoyu.com/2018/06/13/2018-06-13_Java反射机制总结/&title=《Java反射机制总结》 — Born To Do&pic=http://lichaoyu.com/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -495,25 +502,25 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lichaoyu.com/2018/06/13/Java反射机制总结/&title=《Java反射机制总结》 — Born To Do&source=There is nothing you can complain about, it all depends on human effort." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lichaoyu.com/2018/06/13/2018-06-13_Java反射机制总结/&title=《Java反射机制总结》 — Born To Do&source=There is nothing you can complain about, it all depends on human effort." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lichaoyu.com/2018/06/13/Java反射机制总结/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lichaoyu.com/2018/06/13/2018-06-13_Java反射机制总结/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java反射机制总结》 — Born To Do&url=http://lichaoyu.com/2018/06/13/Java反射机制总结/&via=http://lichaoyu.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java反射机制总结》 — Born To Do&url=http://lichaoyu.com/2018/06/13/2018-06-13_Java反射机制总结/&via=http://lichaoyu.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lichaoyu.com/2018/06/13/Java反射机制总结/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lichaoyu.com/2018/06/13/2018-06-13_Java反射机制总结/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -525,7 +532,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJElEQVR42u3aQQ4iMQwEQP7/afa6EjtDtwMrkVROSGSYVA7Gcfx4xOP5Ml6/vZ//95zX+a9PPb4xMDAwfpbxvB33L2hfnPzO1XvvtxIDA+MExtUrrz4nwXd9U5K1YWBgYNwvrg27eVqJgYGB8T1GOzOZj4GBgZEfYvPjaLJNecD98FkcAwPjBxl5mez/f/7K/QYGBsZPMZ7lmJXeZiG4WBUGBsbWjDzA5clZe505+wUMDIzTGMmRcmUkBbv1KwcMDIy9GXnbRLuI/C2zS4J//G9gYGBsx/hsyFtht5uCgYFxJqN4bJQ4tmW1/DiNgYGxNyMPtW3r2Er7xWwmBgbGroy2CaxNBJdauIJfu7yJxcDA2IiRL6sNnbOkc5ZWYmBgYKwv5VNNG1EQx8DA2JqRB75ZkM0/t4kpBgbGCYxZUb6td7WwpZ4RDAyM7RizCL3SHJYst00cMTAwdmXkRa5h4AsuR/OtuZyDgYGxNaMttM2+nfVItFuJgYFxAmOl6D/DrLSavUkQMTAwNmV8KrGbpXrtJcGb/w0MDIwDGLOWrDeVvGBrlp7CwMDYlPEsR35VsHItWl+IYmBgbM3IR976MGuwaBPHNsRjYGD8OqMNsishuG3XKNJHDAyMAxht4Gsbv/JQnoR+DAwMjJWrxJWEry3AYWBgYMyOrO23+fH4TZjGwMA4gJE3fiVP5YuelfMwMDBOY7R5V3vdOCvA5WEXAwNja8Yf5wsD8ftKJewAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACvUlEQVR42u3a0W7jMAwEwP7/T98BfTrgamdXlJwUGD8FiW1pVEBiSX59xdef7+vfz/9/c/XU1Z33b8hH2XDh4eHhLU396kqmlQzcTi5Z0Ps54+Hh4Z3mTQZIduP7d+Z35nPGw8PD+wReu5W3sW5yJx4eHt7v4i0OsJQxwMPDw/t8XhLg5lNfC5eTpMPBXAseHh5ezFtLqr738/H6Hh4eHt5SVb3drPNf8xRGfhj8MC4eHh7eAV7y0jzR0Ibju0LtF3PDw8PD28rLi09r97f49nB6QcXDw8N7hJe/oj1g6lB4KRC//I8BDw8PbxMvn0oS5s6D7AkMDw8P7xleO3BemsrfMH9PVADDw8PD28RbC4XnKdd8lLU+ATw8PLxzvKJKtlTKSlK6SXDcph6iXAseHh7egLd2nuSHxFqzwmSxirgbDw8Pr+S1W3C+ELuSEfkSX36Ph4eHt5WXhMiTFG2y9bfNVUVKFw8PD+8RXttsupbCmKR6i6MIDw8P7wAvGWxeDEsWqx2l6BbAw8PD28prN+jnW1QnpTI8PDy8E7y8lJWXqSZb/1ogHv0N8fDw8Dbx7ieRJ2Hb+9daCpJlwsPDw3uGN0lAtMWwSZo4eeeLEw8PDw/vAG9XSmKSgJi3F1weDHh4eHibeJOkwDOhdns81FE8Hh4eXslrk6Rt21a7fGuFscvWATw8PLytvGR7zZFr9fqckTddRXkRPDw8vCVeXgBLUrrtU8mzreKHcw8PDw/vEV7bMjWhti1fxXzw8PDwDvB2hd2TpMPeFoTR2YKHh4cX89ryfH4A5CmMNh1cJCzw8PDwjvFOpFPXymabW7vw8PDw3spbm3QejrcLFIXaeHh4eB/GS4ZJpt62sRbLgYeHh3eMlxe98rA4TyK0x0ZRAMPDw8M7wGsLYPkxkLcRJM/mieNRfQ8PDw/v7te/PnvFOv8P/TYAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 

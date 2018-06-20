@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <link rel="canonical" href="https://www.lichaoyu.com/2018/06/19/2018-06-19_Android推送分析/">
+    
+    
+    <title>Android推送分析 | Born To Do</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Push,Polling">
+    <link rel="shortcut icon" href="/img/favicon.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.2.8">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpeg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Charlie</h5>
+          <a href="mailto:15708478830@163.com" title="15708478830@163.com" class="mail">
+            
+              <span>1</span>
+            
+              <span>5</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>8</span>
+            
+              <span>4</span>
+            
+              <span>7</span>
+            
+              <span>8</span>
+            
+              <span>8</span>
+            
+              <span>3</span>
+            
+              <span>0</span>
+            
+              <span>@</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>3</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/CharlesLCY" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://weibo.com/2757664455/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank">
+                  <i class="icon icon-lg icon-weibo"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                ABOUT
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-plus-square"></i>
+                CUSTOM
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>Android推送分析</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpeg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">Android推送分析</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-06-19T03:23:16.000Z" itemprop="datePublished" class="page-time">
+  2018-06-19
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-2018-06-19_Android推送分析"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">Android推送分析</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-06-19 11:23:16" datetime="2018-06-19T03:23:16.000Z"  itemprop="datePublished">2018-06-19</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h4 id="一些基本概念"><a href="#一些基本概念" class="headerlink" title="一些基本概念"></a>一些基本概念</h4><p><strong>阻塞</strong>指执行设备操作时，不能获得资源则挂起进程，被挂起的进程进入休眠，从调度器的进行队列中移走。          <strong>非阻塞</strong>指在不能获得资源的情况下，要么放弃，要么不停地查询，直到可以操作。</p>
+<h4 id="C-S通讯思路"><a href="#C-S通讯思路" class="headerlink" title="C/S通讯思路"></a>C/S通讯思路</h4><p>实现客户端和服务器端实时通讯，有两种思路：</p>
+<ol>
+<li>定时去server查询数据，通常是通过HTTP协议来访问web服务器，称为Polling(轮询)；</li>
+<li>移动端和服务器建立长连接，使用XMPP长连接，称为Push(推送)。</li>
+</ol>
+<p><strong>Push在Android平台上长连接的实现</strong><br>　　既然我们知道我们移动端要和Internet进行通信，必须通过运营商的网关，所以，为了不让NAT映射表失效，我们需要定时向Internet发送数据，因为只是为了不然NAT映射表失效，所以只需发送长度为0的数据即可。注意这种定时发送的时间又叫心跳时间。</p>
+<p>　　<strong>Timer</strong>:可以按照计划或者时间周期来执行相关的任务。但是Timer需要用WakeLock来让CPU保持唤醒状态，才能保证任务的执行，这样子会消耗大量流量；当CPU处于休眠的时候，就不能唤醒执行任务，所以应用于移动端明显是不合适。<br>　　<strong>AlarmManager</strong>：AlarmManager类是属于android系统封装好来管理RTC模块的管理类。这里就涉及到RTC模块，要更好地了解两者的区别，就要明白两者真正的区别。<br>RTC（Real- Time Clock）实时闹钟在一个嵌入式系统中，通常采用RTC 来提供可靠的系统时间，包括时分秒和年月日等;而且要求在系统处于关机状态下它也能够正常工作（通常采用后备电池供电），它的外围也不需要太多的辅助电路，典型的就是只需要一个高精度的32.768KHz 晶体和电阻电容等。（如果对这方面感兴趣，可以自己查阅相关资料，这里就说个大概）<br>好了，回来正题。所以，AlarmManager又称全局定时闹钟。这意味着，当我用使用AlarmManager来定时执行任务，CPU可以正常地休眠，只有在执行任务是，才唤醒CPU，这个过程是很短时间的。</p>
+<p>实现全局定时功能： 　　　　</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获得闹钟管理器 </span></span><br><span class="line">AlarmManager am = (AlarmManager)getSystemService(ALARM_SERVICE);<span class="comment">//设置任务执行计划 </span></span><br><span class="line"><span class="comment">//从firstTime才开始执行，每隔5秒再执行</span></span><br><span class="line">am.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, firstTime, <span class="number">5</span>*<span class="number">1000</span>, sender);</span><br></pre></td></tr></table></figure>
+<p><strong>总结：在android客户端使用Push推送时，应该使用AlarmManager全局定时来实现心跳功能，使其真正实现长连接。</strong></p>
+<h4 id="服务器端实现"><a href="#服务器端实现" class="headerlink" title="服务器端实现"></a>服务器端实现</h4><p>当有大量的手机终端需要与服务器维持长连接时，对服务器的设计会是一个很大的挑战。 　　</p>
+<p>假设一台服务器维护10万个长连接，当有1000万用户量时，需要有多达100台的服务器来维护这些用户的长连接，这里还不算用于做备份的服务器，这将会是一个巨大的成本问题。那就需要我们尽可能提高单台服务器接入用户的量，也就是业界已经讨论很久了的 C10K 问题。       </p>
+<p>这是他们怎么做的了，他们是非常巧妙的利用cpu中多核的原理，利用多核来唤起了相应核数个线程了，并且利用非阻塞的消息队列的机制，大大提高了服务器的吞吐量了，这样能够是一个服务器维持200个左右的长连接了，这样有效突破了业界一个瓶颈了。可见多核实现了android消息推送重要性。相应的思维导图如下：</p>
+<figure class="image-box">
+                <img src="/2018/06/19/2018-06-19_Android推送分析/push.jpg" alt="实时通讯方式示例图" title="" class="">
+                <p>实时通讯方式示例图</p>
+            </figure>
+<h4 id="痛难点及解决方案"><a href="#痛难点及解决方案" class="headerlink" title="痛难点及解决方案"></a>痛难点及解决方案</h4><p>做推送需要解决的最大三个问题：<strong>电量消耗，数据流量消耗，服务持久化。</strong></p>
+<p><strong>电量消耗优化与数据流量消耗优化：</strong></p>
+<p>这两个问题其实可以合并成一个问题，因为请求服务器其实也是一个费电的事情。与维持一个长连接类似，要实现推送功能，不管是维持一个长连接或者是定时请求服务器都需要耗费网络数据流量，而只不过长连接是一个细水长流不断耗费，而轮询是一次一大断数据的耗费。这样就需要一种可行的策略去配置，让轮询按照我们想要的方式去执行。目前我采用的思路是当手机处于GPRS模式时降低轮询的频率，每5分钟请求一次服务器，当手机处于WiFi模式时每2分钟请求一次服务器，同时设置如果熄灭屏幕则停止推送请求，当屏幕熄灭20秒后杀死推送进程，这样不仅不需要考虑维护一个进程的消耗同时也节省了数据流量的使用。</p>
+<p><strong>服务持久化：</strong></p>
+<p>服务持久化就是进程常驻，说白了就是进程保活。要尽可能使我们的进程保持较高的优先级，不轻易被系统杀死。像QQ微信这种应用做的就非常好，不管使用第三方手机助手或者使用系统停止一个应用(不是设置里面的那种停止，是长按Home键的那种)，后台Service都不会被回收。</p>
+<p>在Android的ActivityManager中有一个内部类RunningAppProcessInfo，用来记录当前系统中进程的状态，如下是其中一些值：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Constant for &#123;<span class="doctag">@link</span> #importance&#125;: This process is running the</span></span><br><span class="line"><span class="comment"> * foreground UI; that is, it is the thing currently at the top of the screen</span></span><br><span class="line"><span class="comment"> * that the user is interacting with.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> IMPORTANCE_FOREGROUND = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Constant for &#123;<span class="doctag">@link</span> #importance&#125;: This process is running a foreground</span></span><br><span class="line"><span class="comment"> * service, for example to perform music playback even while the user is</span></span><br><span class="line"><span class="comment"> * not immediately in the app.  This generally indicates that the process</span></span><br><span class="line"><span class="comment"> * is doing something the user actively cares about.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> IMPORTANCE_FOREGROUND_SERVICE = <span class="number">125</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Constant for &#123;<span class="doctag">@link</span> #importance&#125;: This process is running the foreground</span></span><br><span class="line"><span class="comment"> * UI, but the device is asleep so it is not visible to the user.  This means</span></span><br><span class="line"><span class="comment"> * the user is not really aware of the process, because they can not see or</span></span><br><span class="line"><span class="comment"> * interact with it, but it is quite important because it what they expect to</span></span><br><span class="line"><span class="comment"> * return to once unlocking the device.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> IMPORTANCE_TOP_SLEEPING = <span class="number">150</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Constant for &#123;<span class="doctag">@link</span> #importance&#125;: This process is running something</span></span><br><span class="line"><span class="comment"> * that is actively visible to the user, though not in the immediate</span></span><br><span class="line"><span class="comment"> * foreground.  This may be running a window that is behind the current</span></span><br><span class="line"><span class="comment"> * foreground (so paused and with its state saved, not interacting with</span></span><br><span class="line"><span class="comment"> * the user, but visible to them to some degree); it may also be running</span></span><br><span class="line"><span class="comment"> * other services under the system's control that it inconsiders important.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> IMPORTANCE_VISIBLE = <span class="number">200</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Constant for &#123;<span class="doctag">@link</span> #importance&#125;: This process is not something the user</span></span><br><span class="line"><span class="comment"> * is directly aware of, but is otherwise perceptible to them to some degree.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> IMPORTANCE_PERCEPTIBLE = <span class="number">230</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Constant for &#123;<span class="doctag">@link</span> #importance&#125;: This process is running an</span></span><br><span class="line"><span class="comment"> * application that can not save its state, and thus can't be killed</span></span><br><span class="line"><span class="comment"> * while in the background.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@hide</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> IMPORTANCE_CANT_SAVE_STATE= <span class="number">270</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Constant for &#123;<span class="doctag">@link</span> #importance&#125;: This process is contains services</span></span><br><span class="line"><span class="comment"> * that should remain running.  These are background services apps have</span></span><br><span class="line"><span class="comment"> * started, not something the user is aware of, so they may be killed by</span></span><br><span class="line"><span class="comment"> * the system relatively freely (though it is generally desired that they</span></span><br><span class="line"><span class="comment"> * stay running as long as they want to).</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> IMPORTANCE_SERVICE = <span class="number">300</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Constant for &#123;<span class="doctag">@link</span> #importance&#125;: This process process contains</span></span><br><span class="line"><span class="comment"> * cached code that is expendable, not actively running any app components</span></span><br><span class="line"><span class="comment"> * we care about.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> IMPORTANCE_CACHED = <span class="number">400</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@deprecated</span> Renamed to &#123;<span class="doctag">@link</span> #IMPORTANCE_CACHED&#125;.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> IMPORTANCE_BACKGROUND = IMPORTANCE_CACHED;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Constant for &#123;<span class="doctag">@link</span> #importance&#125;: This process is empty of any</span></span><br><span class="line"><span class="comment"> * actively running code.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@deprecated</span> This value is no longer reported, use &#123;<span class="doctag">@link</span> #IMPORTANCE_CACHED&#125; instead.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Deprecated</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> IMPORTANCE_EMPTY = <span class="number">500</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Constant for &#123;<span class="doctag">@link</span> #importance&#125;: This process does not exist.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> IMPORTANCE_GONE = <span class="number">1000</span>;</span><br></pre></td></tr></table></figure>
+<p>一般数值大于RunningAppProcessInfo.IMPORTANCE_SERVICE的进程都长时间没用或者空进程了</p>
+<p>一般数值大于RunningAppProcessInfo.IMPORTANCE_VISIBLE的进程都是非可见进程，也就是在后台运行着</p>
+<p>第三方清理软件清理的一般是大于IMPORTANCE_VISIBLE的值，所以要想不被杀死就需要将自己的进程降低到IMPORTANCE_VISIBLE以下，也就是可见进程的程度。在每一个Service中有一个方法叫startForeground,也就是以可见进程的模式启动，这里是在SDK源码中的实现与注释，可以看到，它会在通知栏持续显示一个通知，但只需要将id传为0即可避免通知的显示。当然要取消这种可见进程等级的设置只需要调stopForgeround即可。</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-06-20T06:27:50.187Z" itemprop="dateUpdated">2018-06-20 14:27:50</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2018/06/19/2018-06-19_Android推送分析/" target="_blank" rel="external">http://lichaoyu.com/2018/06/19/2018-06-19_Android推送分析/</a>
+        
+    </div>
+    <footer>
+        <a href="http://lichaoyu.com">
+            <img src="/img/avatar.png" alt="Charlie">
+            Charlie
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Polling/">Polling</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Push/">Push</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lichaoyu.com/2018/06/19/2018-06-19_Android推送分析/&title=《Android推送分析》 — Born To Do&pic=http://lichaoyu.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lichaoyu.com/2018/06/19/2018-06-19_Android推送分析/&title=《Android推送分析》 — Born To Do&source=There is nothing you can complain about, it all depends on human effort." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lichaoyu.com/2018/06/19/2018-06-19_Android推送分析/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android推送分析》 — Born To Do&url=http://lichaoyu.com/2018/06/19/2018-06-19_Android推送分析/&via=http://lichaoyu.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lichaoyu.com/2018/06/19/2018-06-19_Android推送分析/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2018/06/20/lcy/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">lcy</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2018/06/13/2018-06-13_Java反射机制总结/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Java反射机制总结</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#一些基本概念"><span class="post-toc-number">1.</span> <span class="post-toc-text">一些基本概念</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#C-S通讯思路"><span class="post-toc-number">2.</span> <span class="post-toc-text">C/S通讯思路</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#服务器端实现"><span class="post-toc-number">3.</span> <span class="post-toc-text">服务器端实现</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#痛难点及解决方案"><span class="post-toc-number">4.</span> <span class="post-toc-text">痛难点及解决方案</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        There is nothing we can complain about, it all depends on what we do.
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="/" target="_blank">HOME</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.gitee.com" target="_blank">gitee</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.coding.net" target="_blank">coding</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Charlie &copy; 2018
+            </span>
+        		
+           	
+            
+            
+            
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lichaoyu.com/2018/06/19/2018-06-19_Android推送分析/&title=《Android推送分析》 — Born To Do&pic=http://lichaoyu.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lichaoyu.com/2018/06/19/2018-06-19_Android推送分析/&title=《Android推送分析》 — Born To Do&source=There is nothing you can complain about, it all depends on human effort." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lichaoyu.com/2018/06/19/2018-06-19_Android推送分析/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android推送分析》 — Born To Do&url=http://lichaoyu.com/2018/06/19/2018-06-19_Android推送分析/&via=http://lichaoyu.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lichaoyu.com/2018/06/19/2018-06-19_Android推送分析/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMUlEQVR42u3ay27DQAgF0Pz/T6fbSpWdC0xbzfh4FeVljheIAV6v+Hr/uL6/f/U6+ebVXV6/cWFgYGzLeN9e94z80/tA8/teUjEwMB7AuMpg99+ZpONqmv4QMwYGBkZc5OUJd/L4MDAwMPK0mCTZPJR/SLgYGBhbMfLgJv2uXmNu8VkcAwNjQ0bedf/7178y38DAwNiK8S5eq0JMRpiFqDAwMI5m9Mq+JB3n/5m//yEeDAyMoxm9tn7e+q820XoPBQMD41RG3sCaNLx6A4ZCiYmBgXE0Y1R+LWqZJSutvdgwMDDOYNyXYsmgsVcIzlc0MDAwnsaYH2KrR9Bqmh411zAwMDZnTMq7PKXmD6vaHbycb2BgYBzEqDa88uNotTXWGy1gYGA8gZFPAJOUmj+CVb8tDzIxMDA2ZFSPrNUiL0mX1UPvgg0RDAyMrRjVo2kSRHUAkJSG5WULDAyMgxi9Eq16y3yo0Pw+BgbG0YxquL3QF6xT5EduDAyMQxnVFnyPlBxxJ+05DAyMJzB6qTC/8gWyvEz8sDOCgYFxKCNf+eq11fIGX3VEgYGB8RxG75b5uDEpBJPfNoPDwMDYkNEr73qFY3UUmt8XAwPjbEYv2U2acb0RaXlnBAMD4zjGqiQ7KTp7a2flfI+BgbE5Yx5Eko4L7bNitBgYGBjV4UEVv+A/MTAwMIKD66rDbW9oioGB8QRGvsa6tt02yZwYGBjPYVSPjr2l1eqyxdoWHgYGxraMLxTJ2xk2/v25AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.2.8"></script>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.2.8"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.2.8"></script>
+
+<!-- third-party -->
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.2.8"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+    <script>
+    (function() {
+        var OriginTitile = document.title, titleTime;
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                document.title = 'Where are you?';
+                clearTimeout(titleTime);
+            } else {
+                document.title = 'Welcome back!';
+                titleTime = setTimeout(function() {
+                    document.title = OriginTitile;
+                },2000);
+            }
+        });
+    })();
+</script>
+
+
+    
+</body>
+</html>
