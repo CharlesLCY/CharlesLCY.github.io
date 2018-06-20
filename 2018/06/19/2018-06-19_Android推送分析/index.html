@@ -241,7 +241,7 @@
 <p>　　<strong>Timer</strong>:可以按照计划或者时间周期来执行相关的任务。但是Timer需要用WakeLock来让CPU保持唤醒状态，才能保证任务的执行，这样子会消耗大量流量；当CPU处于休眠的时候，就不能唤醒执行任务，所以应用于移动端明显是不合适。<br>　　<strong>AlarmManager</strong>：AlarmManager类是属于android系统封装好来管理RTC模块的管理类。这里就涉及到RTC模块，要更好地了解两者的区别，就要明白两者真正的区别。<br>RTC（Real- Time Clock）实时闹钟在一个嵌入式系统中，通常采用RTC 来提供可靠的系统时间，包括时分秒和年月日等;而且要求在系统处于关机状态下它也能够正常工作（通常采用后备电池供电），它的外围也不需要太多的辅助电路，典型的就是只需要一个高精度的32.768KHz 晶体和电阻电容等。（如果对这方面感兴趣，可以自己查阅相关资料，这里就说个大概）<br>好了，回来正题。所以，AlarmManager又称全局定时闹钟。这意味着，当我用使用AlarmManager来定时执行任务，CPU可以正常地休眠，只有在执行任务是，才唤醒CPU，这个过程是很短时间的。</p>
 <p>实现全局定时功能： 　　　　</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获得闹钟管理器 </span></span><br><span class="line">AlarmManager am = (AlarmManager)getSystemService(ALARM_SERVICE);<span class="comment">//设置任务执行计划 </span></span><br><span class="line"><span class="comment">//从firstTime才开始执行，每隔5秒再执行</span></span><br><span class="line">am.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, firstTime, <span class="number">5</span>*<span class="number">1000</span>, sender);</span><br></pre></td></tr></table></figure>
-<p><strong>总结：在android客户端使用Push推送时，应该使用AlarmManager全局定时来实现心跳功能，使其真正实现长连接。心跳包的主要作用是防止NAT超时, 其次是探测连接是否断开。</strong></p>
+<p><strong>总结：在android客户端使用Push推送时，应该使用AlarmManager全局定时来实现心跳功能，使其真正实现长连接。</strong></p>
 <h3 id="服务器端实现"><a href="#服务器端实现" class="headerlink" title="服务器端实现"></a>服务器端实现</h3><p>当有大量的手机终端需要与服务器维持长连接时，对服务器的设计会是一个很大的挑战。 　　</p>
 <p>假设一台服务器维护10万个长连接，当有1000万用户量时，需要有多达100台的服务器来维护这些用户的长连接，这里还不算用于做备份的服务器，这将会是一个巨大的成本问题。那就需要我们尽可能提高单台服务器接入用户的量，也就是业界已经讨论很久了的 C10K 问题。       </p>
 <p>这是他们怎么做的了，他们是非常巧妙的利用cpu中多核的原理，利用多核来唤起了相应核数个线程了，并且利用非阻塞的消息队列的机制，大大提高了服务器的吞吐量了，这样能够是一个服务器维持200个左右的长连接了，这样有效突破了业界一个瓶颈了。可见多核实现了android消息推送重要性。相应的思维导图如下：</p>
@@ -259,6 +259,15 @@
 <p>一般数值大于RunningAppProcessInfo.IMPORTANCE_SERVICE的进程都长时间没用或者空进程了</p>
 <p>一般数值大于RunningAppProcessInfo.IMPORTANCE_VISIBLE的进程都是非可见进程，也就是在后台运行着</p>
 <p>第三方清理软件清理的一般是大于IMPORTANCE_VISIBLE的值，所以要想不被杀死就需要将自己的进程降低到IMPORTANCE_VISIBLE以下，也就是可见进程的程度。在每一个Service中有一个方法叫startForeground,也就是以可见进程的模式启动，这里是在SDK源码中的实现与注释，可以看到，它会在通知栏持续显示一个通知，但只需要将id传为0即可避免通知的显示。当然要取消这种可见进程等级的设置只需要调stopForgeround即可。</p>
+<h3 id="心跳包的作用"><a href="#心跳包的作用" class="headerlink" title="心跳包的作用"></a>心跳包的作用</h3><p>网上很多文章介绍长连接的时候都说:</p>
+<blockquote>
+<p>因为是长连接, 所以需要定期发送心跳包. 心跳包是用来通知服务器客户端当前状态.</p>
+</blockquote>
+<p>明确一点, TCP长连接本质上不需要心跳包来维持, 大家可以试一试, 让两台电脑连上同一个wifi, 然后让其中一台做服务器, 另一台用一个普通的没有设置KeepAlive的Socket连上服务器, 只要两台电脑别断网, 路由器也别断电, DHCP正常续租, 就这么放着, 过几个小时再用其中一台电脑通过之前建立的TCP连接给另一台发消息, 另一台肯定能收到.</p>
+<p>那为什么要有心跳包呢? 其实<strong>主要是为了防止上面提到的NAT超时</strong>, 既然一些NAT设备判断是否淘汰NAT映射的依据是一定时间没有数据, 那么客户端就主动发一个数据.</p>
+<p>当然, 如果仅仅是为了防止NAT超时, 可以让服务器来发送心跳包给客户端, 不过这样做有个弊病就是, 万一连接断了, 服务器就再也联系不上客户端了. 所以心跳包必须由客户端发送, 客户端发现连接断了, 还可以尝试重连服务器.</p>
+<p>所以心跳包的主要作用是防止NAT超时, 其次是探测连接是否断开.</p>
+<p>链路断开, 没有写操作的TCP连接是感知不到的, 除非这个时候发送数据给服务器, 造成写超时, 否则TCP连接不会知道断开了. 主动kill掉一方的进程, 另一方会关闭TCP连接, 是系统代进程给服务器发的FIN. TCP连接就是这样, 只有明确的收到对方发来的关闭连接的消息(收到RST也会关闭, 大家都懂), 或者自己意识到发生了写超时, 否则它认为连接还存在.</p>
 <h3 id="心跳包的时间间隔"><a href="#心跳包的时间间隔" class="headerlink" title="心跳包的时间间隔"></a>心跳包的时间间隔</h3><p>既然心跳包的主要作用是防止NAT超时, 那么这个间隔就大有文章了.</p>
 <p>发送心跳包势必要先唤醒设备, 然后才能发送, 如果唤醒设备过于频繁, 或者直接导致设备无法休眠, 会大量消耗电量, 而且移动网络下进行网络通信, 比在wifi下耗电得多. 所以这个心跳包的时间间隔应该尽量的长, 最理想的情况就是根本没有NAT超时, 比如刚才我说的两台在同一个wifi下的电脑, 完全不需要心跳包. 这也就是网上常说的<em>长连接, 慢心跳</em>.</p>
 <p>现实是残酷的, 根据网上的一些说法, 中移动2/3G下, NAT超时时间为5分钟, 中国电信3G则大于28分钟, 理想的情况下, 客户端应当以略小于NAT超时时间的间隔来发送心跳包.</p>
@@ -290,7 +299,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-06-20T07:04:57.306Z" itemprop="dateUpdated">2018-06-20 15:04:57</time>
+    Last updated: <time datetime="2018-06-20T07:43:56.220Z" itemprop="dateUpdated">2018-06-20 15:43:56</time>
 </span><br>
 
 
@@ -396,7 +405,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一些基本概念"><span class="post-toc-number">1.</span> <span class="post-toc-text">一些基本概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#C-S通讯思路"><span class="post-toc-number">2.</span> <span class="post-toc-text">C/S通讯思路</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#服务器端实现"><span class="post-toc-number">3.</span> <span class="post-toc-text">服务器端实现</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#痛难点及解决方案"><span class="post-toc-number">4.</span> <span class="post-toc-text">痛难点及解决方案</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#心跳包的时间间隔"><span class="post-toc-number">5.</span> <span class="post-toc-text">心跳包的时间间隔</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#服务器如何处理心跳包"><span class="post-toc-number">6.</span> <span class="post-toc-text">服务器如何处理心跳包</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#心跳包和轮询的区别"><span class="post-toc-number">7.</span> <span class="post-toc-text">心跳包和轮询的区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#TCP唤醒Android"><span class="post-toc-number">8.</span> <span class="post-toc-text">TCP唤醒Android</span></a></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一些基本概念"><span class="post-toc-number">1.</span> <span class="post-toc-text">一些基本概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#C-S通讯思路"><span class="post-toc-number">2.</span> <span class="post-toc-text">C/S通讯思路</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#服务器端实现"><span class="post-toc-number">3.</span> <span class="post-toc-text">服务器端实现</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#痛难点及解决方案"><span class="post-toc-number">4.</span> <span class="post-toc-text">痛难点及解决方案</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#心跳包的作用"><span class="post-toc-number">5.</span> <span class="post-toc-text">心跳包的作用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#心跳包的时间间隔"><span class="post-toc-number">6.</span> <span class="post-toc-text">心跳包的时间间隔</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#服务器如何处理心跳包"><span class="post-toc-number">7.</span> <span class="post-toc-text">服务器如何处理心跳包</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#心跳包和轮询的区别"><span class="post-toc-number">8.</span> <span class="post-toc-text">心跳包和轮询的区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#TCP唤醒Android"><span class="post-toc-number">9.</span> <span class="post-toc-text">TCP唤醒Android</span></a></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
