@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <link rel="canonical" href="https://www.lichaoyu.com/2018/08/22/2018-08-22-正则表达式总结/">
+    
+    
+    <title>正则表达式总结 | Born To Do</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Regular Expression">
+    <link rel="shortcut icon" href="/img/favicon.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.2.8">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpeg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Charlie</h5>
+          <a href="mailto:15708478830@163.com" title="15708478830@163.com" class="mail">
+            
+              <span>1</span>
+            
+              <span>5</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>8</span>
+            
+              <span>4</span>
+            
+              <span>7</span>
+            
+              <span>8</span>
+            
+              <span>8</span>
+            
+              <span>3</span>
+            
+              <span>0</span>
+            
+              <span>@</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>3</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/CharlesLCY" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://weibo.com/2757664455/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank">
+                  <i class="icon icon-lg icon-weibo"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories/"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about/"  >
+                <i class="icon icon-lg icon-user"></i>
+                ABOUT
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-plus-square"></i>
+                CUSTOM
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>正则表达式总结</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpeg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">正则表达式总结</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-08-22T10:03:53.000Z" itemprop="datePublished" class="page-time">
+  2018-08-22
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/正则/">正则</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-2018-08-22-正则表达式总结"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">正则表达式总结</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-08-22 18:03:53" datetime="2018-08-22T10:03:53.000Z"  itemprop="datePublished">2018-08-22</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/正则/">正则</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <ul>
+<li>Android</li>
+</ul>
+<h2 id="元字符和普通字符"><a href="#元字符和普通字符" class="headerlink" title="元字符和普通字符"></a>元字符和普通字符</h2><p>大部分字符，包括所有的字母和数字字符，是普通字符。它们只能匹配自己，如cat。</p>
+<p>有一些被称为元字符的特殊字符，可以匹配一些特殊规则。</p>
+<blockquote>
+<p>注意：不做特殊说明，正则表达式中是区分大小写的。但是，几乎所有正则表达式的实现，都会提供一个Flag用来控制是否区分大小写。</p>
+</blockquote>
+<ul>
+<li>点“.”<ul>
+<li>可以匹配任意一个字符</li>
+<li>反斜杠“\”可以忽略元字符，即使元字符回到普通字符，如c\.t只能匹配c.t，它本身也是一个元字符</li>
+<li>==.不能用于匹配换行符，实现环境中通常会提供一个Flag标志位来控制这一点==</li>
+</ul>
+</li>
+</ul>
+<h2 id="字符类"><a href="#字符类" class="headerlink" title="字符类"></a>字符类</h2><p>字符类是一组子啊方括号内的字符，表示可以匹配其中的任何一个字符。</p>
+<ul>
+<li>正则表达式c[aeiou]t，表示可以匹配的字符串是”以c开头，接着是aeiou中的任何一个字符，最后以t结尾”。</li>
+<li>正则表达式[0123456789]表示匹配任意一个整数。</li>
+<li>正则表达式[a]表示匹配单字符a。</li>
+<li>[\[\]ab]表示匹配的字符为”[“或者”]”或者”a”,或者”b”。</li>
+<li>在字符类中，字符的重复和出现顺序并不重要，[dabaaabcc]与[abc]是相同的。</li>
+</ul>
+<p>&emsp;&emsp;重要提示：字符类中和字符类外的规则有时不同，一些字符在字符类中是元字符，在字符类外是普通字符。一些字符正好相反。还有一些字符在字符类中和字符类外都是元字符，这要视情况而定！</p>
+<p>&emsp;&emsp;比如，.表示匹配任意一个字符，而[.]表示匹配一个全角句号。这不是一回事！</p>
+<h2 id="字符类的范围"><a href="#字符类的范围" class="headerlink" title="字符类的范围"></a>字符类的范围</h2><p>使用短横线来表示匹配字母或数字的范围。例如[b-f]与[b,c,d,e,f]相同，都是匹配bcdef中的一个字符。</p>
+<h2 id="字符类的反义"><a href="#字符类的反义" class="headerlink" title="字符类的反义"></a>字符类的反义</h2><p>你可以在字符类的起始位放一个反义符。</p>
+<ul>
+<li>[^a]表示匹配任何不是“a”的字符</li>
+<li>[^a-zA-Z0-9]表示匹配任何不是字母也不是数字的字符</li>
+<li>[\\^abc]匹配一个为“^”或者a或者b或者c的字符</li>
+<li>[\^\\^]表示匹配任何不为“^”的字符</li>
+</ul>
+<h2 id="转义字符类"><a href="#转义字符类" class="headerlink" title="转义字符类"></a>转义字符类</h2><ol>
+<li>\d这个正则表达式与[0-9]作用相同，都是匹配任何一个数字。（要匹配\d,应该使用正则表达式\\d）</li>
+<li>\D与[^0-9]相同，表示匹配一个非数字字符。</li>
+<li>\w与[0-9A-Za-z]相同，都表示匹配一个数字或字母字符</li>
+<li>\W与[^0-9A-Za-z_]相同，表示匹配一个非数字同时不是字母的字符。</li>
+<li>\s意味着匹配一个空字符（空格，制表符，回车或者换行）</li>
+<li>\S表示匹配一个非空字符。</li>
+</ol>
+<h2 id="重复"><a href="#重复" class="headerlink" title="重复"></a>重复</h2><p>在字符或字符集之后，使用{}大括号来表示重复。</p>
+<ul>
+<li>正则表达式a{1}与a意思相同，都表示匹配字母a</li>
+<li>a{3}表示匹配字符串“aaa”</li>
+<li>a{0}表示匹配空字符串。从这个正则表达式本身来看，它毫无意义。如果你对任何文本执行这样的正则表达式，你可以定位到搜索的起始位置，即使文本为空。</li>
+<li>a\{2\}表示匹配字符串“a{2}”</li>
+<li>在字符类中，大括号没有特殊含义。[{}]表示匹配一个左边的大括号，或者一个右边的大括号</li>
+</ul>
+<blockquote>
+<p>注意：重复字符是没有记忆性的，比如[abc]{2}表示先匹配”a或者b或者c”，再匹配”a或者b或者c”，与匹配”aa或者ab或者ac或者ba或者bb或者bc或者ca或者cb或者cc”一样。[abc]{2}并不能表示匹配”aa或者bb或者cc”。</p>
+</blockquote>
+<h2 id="指定重复次数范围"><a href="#指定重复次数范围" class="headerlink" title="指定重复次数范围"></a>指定重复次数范围</h2><p>重复次数是可以指定范围的</p>
+<ul>
+<li>x{4,4}与x{4}相同</li>
+<li>colou{0,1}r表示匹配colour或者color</li>
+<li>a{3,5}表示匹配aaaaa或者aaaa或者aaa</li>
+</ul>
+<p>重复次数的范围可以是开区间</p>
+<ul>
+<li>a{1，}表示匹配一个或一个以上的连续字符a。依然是匹配最长字符串。当找到第一个a之后，正则表达式会尝试匹配尽量多个的连续字母a。</li>
+<li>.{0,}表示匹配任意内容。无论你输入的文本是什么，即使是一个空字符串，这个正则表达式都会成功匹配全文并返回结果。</li>
+</ul>
+<p>关于重复的转义字符<br>-<br>？与{0,1}相同，比如，colou?r表示匹配colour或者color</p>
+<p><em>与{0,}相同。比如，.</em>表示匹配任意内容</p>
+<p>+与{1，}相同。比如,\w+表示匹配一个词。其中”一个词”表示由一个或一个以上的字符组成的字符串，比如_var或者AccountName1.</p>
+<h2 id="非贪婪匹配"><a href="#非贪婪匹配" class="headerlink" title="非贪婪匹配"></a>非贪婪匹配</h2><p>正则表达式 “.*” 表示匹配双引号，之后是任意内容，之后再匹配一个双引号。注意，其中匹配任意内容也可以是双引号。通常情况下，这并不是很有用。通过在句尾加上一个问号，可以使得字符串重复不再匹配最长字符。</p>
+<ul>
+<li>“.*?”表示先匹配一个双引号，然后匹配最少的字符，然后是一个双引号，与上面两个例子不同，这很有用。</li>
+</ul>
+<h2 id="选择匹配"><a href="#选择匹配" class="headerlink" title="选择匹配"></a>选择匹配</h2><p>使用|来分割可以匹配的不同选择</p>
+<ul>
+<li>cat|dog表示匹配”cat”或者”dog”</li>
+<li>red|blue|以及red||blue以及|red|blue都表示匹配red或者blue或者一个空字符串</li>
+<li>a|b|c与[abc]相同</li>
+<li>cat|dog|\|表示匹配”cat”或者”dog”或者一个分隔符”|“</li>
+<li>[cat|dog]表示匹配a或者c或者d或者g或者o或者t或者一个分隔符“|”</li>
+</ul>
+<h2 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h2><p>使用括号表示分组</p>
+<p>单词分隔符<br>-<br>在单词和费单词之间有单词分隔符。在文本的开头和结尾通常也有单词分隔符。</p>
+<ul>
+<li>\b表示匹配一个单词分隔符</li>
+<li>\b\w\w\w\b表示匹配一个三字母单词</li>
+<li>a\ba表示匹配两个a中间有一个单词分隔符。这个正则表达式永远不会有匹配的字符，无论输入怎样的文本。</li>
+</ul>
+<blockquote>
+<p>单词分隔符本身并不是字符，它的宽度为0</p>
+</blockquote>
+<h2 id="换行符"><a href="#换行符" class="headerlink" title="换行符"></a>换行符</h2><p>一篇文本中可以有一行或多行，行与行之间由换行符分隔。</p>
+<p>注意，所有的文本都是以一行结束的，而不是以换行符结束。但是，任意一行都可能为空，包括最后一行。</p>
+<p>行的起始位置，是在换行符和下一行首字符之间的空间。考虑到单词分隔符，文本的起始位置也可以当做是首行位置。</p>
+<p>最后一行是最后一行的尾字符和换行符之间的空间。考虑到单词分隔符，文本的结束也可以认为是行的结束。</p>
+<p>那么新的格式表示如下:</p>
+<ul>
+<li>Start-of-line, line, end-of-line</li>
+<li>Line break</li>
+<li>Start-of-line, line, end-of-line</li>
+<li>Line break</li>
+<li>…</li>
+<li>Line break</li>
+<li>Start-of-line, line, end-of-line</li>
+</ul>
+<p>基于上述概念:</p>
+<ul>
+<li>^表示匹配行的开始位置</li>
+<li>$表示匹配行的结束位置</li>
+<li>^&amp;表示一个空行</li>
+<li>^.*&amp; 表示匹配全文内容，因为行的开始符号也是一个字符，”.”会匹配这个符号。找到单独的一行，可以使用 ^.*?$</li>
+<li>\\^\$表示匹配字符串“$”</li>
+<li>[$]表示匹配一个$。但是，[^]不是合法的正则表达式。记住在方括号中，字符有不同的特殊含义。要想在方括号内匹配^，必须用[\^]</li>
+</ul>
+<h2 id="文本分界"><a href="#文本分界" class="headerlink" title="文本分界"></a>文本分界</h2><p>在很多的正则表达式实现中，将^和$作为文本的开始符号和结束符号。</p>
+<p>还有一些实现中，用\A和\z作为文本的开始和结束符号。</p>
+<p>捕捉和替换<br>=</p>
+<h2 id="捕获元组"><a href="#捕获元组" class="headerlink" title="捕获元组"></a>捕获元组</h2><p>使用括号可以捕获子串。捕获组从左向右编，也就是只需要==对左括号计数==。</p>
+<p>在一些正则表达式的实现中，你可以从零开始编号，编号0代表整句话。</p>
+<p>在其他的实现中，如果没有指定捕获组，那么捕获组1会自动地填入捕获组0的信息。</p>
+<h2 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h2><p>假如你使用了一个正则表达式去匹配字符串，你可以描述另外一个字符串来替换其中的匹配字符。用来替换的字符串称为替换表达式。</p>
+<p>$0 $1 $2 表示捕获组0，1，2。</p>
+<p>23h59 –&gt; 匹配：(\d\d)h(\d\d)<br>–&gt; 替换：$1:$2 –&gt; 23:59</p>
+<h2 id="反向引用"><a href="#反向引用" class="headerlink" title="反向引用"></a>反向引用</h2><p>在一个正则表达式中，你也可以引用捕获组。</p>
+<p>比如，[abc]{2}表示匹配aa或者ab或者ac或者ba或者bb或者bc或者ca或者cb或者cc.但是{[abc]}\1表示只匹配aa或者bb或者cc.</p>
+<h2 id="使用正则表达式编程"><a href="#使用正则表达式编程" class="headerlink" title="使用正则表达式编程"></a>使用正则表达式编程</h2><ul>
+<li>在java中，过度使用反斜杠，匹配反斜杠或者是左边方括号，或者右边方括号的正则表达式从[\\\[\]] 变为String re = “[\\\\\\[\\]]”</li>
+<li>在其他语言中，正则表达式是由特殊标明的，比如用/ 。比如在JavaScript中，找到URL必须使用var regExp = /https?:\/\//;</li>
+</ul>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
+<li>当你动态创建一个正则表达式的时候请特别小心。如果你使用的字符串不够完善的话，可能会有意想不到的匹配结果。这可能导致语法错误，更糟糕的是，你的正则表达式语法正确，但是结果无法预料。</li>
+<li>将正则表达式字符串加入反复运行的程序中，是一种开销很大的操作。如果你可以在循环中避免使用正则表达式，你可以大大提高效率。</li>
+</ul>
+<h2 id="输入验证"><a href="#输入验证" class="headerlink" title="输入验证"></a>输入验证</h2><ul>
+<li><p>信用卡号</p>
+<p>eg:在不先过滤掉所有的非数字字符的情况下，使用正则表达式验证卡号的正确性。</p>
+<p>\D<em>(\d\D</em>){16}</p>
+</li>
+<li><p>不要使用正则表达式来验证姓名。实际上，即使可以，也不要企图验证姓名。</p>
+</li>
+<li><p>首先，这样的验证很难是精确的，第二，即使一个电子邮件地址可以成功匹配正则表达式，也不代表这个邮箱实际存在。邮箱的唯一验证方法，是发送验证邮件。</p>
+</li>
+<li><p>不要使用正则表达式来解析HTML或者XML</p>
+</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>字符: a b c d 1 2 3 4 etc.</li>
+<li>字符类: . [abc][a-z] \d \w \s<ul>
+<li>. 代表任何字符</li>
+<li>\d 表示“数字”</li>
+<li>\w 表示”字母”, [0-9A-Za-z_]</li>
+<li>\s 表示“空格,制表符,回车或换行符”</li>
+<li>否定字符类: [^abc] \D \W \S</li>
+</ul>
+</li>
+<li>重复: {4} {3,16} {1,} ? * +<ul>
+<li>? 表示 “零次或一次”</li>
+<li>* 表示 “大于零次”</li>
+<li>+ 表示 “一次或一次以上”</li>
+<li>如果不加上？，所有的重复都是最长匹配的（贪婪）</li>
+</ul>
+</li>
+<li>分组: (Septem|Octo|Novem|Decem)ber</li>
+<li>词，行以及文本的分隔: \b ^ $ \A \z</li>
+<li>转义字符: \1 \2 \3 etc. (在匹配表达式和替换表达式中都可用)</li>
+<li>元字符: . \ [ ] { } ? * + | ( ) ^ $</li>
+<li>在字符类中使用元字符: [ ] \ - ^</li>
+<li>使用反斜杠可以忽略元字符: \</li>
+</ul>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-08-22T10:16:28.744Z" itemprop="dateUpdated">2018-08-22 18:16:28</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2018/08/22/2018-08-22-正则表达式总结/" target="_blank" rel="external">http://lichaoyu.com/2018/08/22/2018-08-22-正则表达式总结/</a>
+        
+    </div>
+    <footer>
+        <a href="http://lichaoyu.com">
+            <img src="/img/avatar.png" alt="Charlie">
+            Charlie
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Regular-Expression/">Regular Expression</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lichaoyu.com/2018/08/22/2018-08-22-正则表达式总结/&title=《正则表达式总结》 — Born To Do&pic=http://lichaoyu.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lichaoyu.com/2018/08/22/2018-08-22-正则表达式总结/&title=《正则表达式总结》 — Born To Do&source=There is nothing you can complain about, it all depends on human effort." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lichaoyu.com/2018/08/22/2018-08-22-正则表达式总结/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《正则表达式总结》 — Born To Do&url=http://lichaoyu.com/2018/08/22/2018-08-22-正则表达式总结/&via=http://lichaoyu.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lichaoyu.com/2018/08/22/2018-08-22-正则表达式总结/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2018/07/16/2018-07-16-Android各版本新特性总结/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Android各版本新特性总结</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#元字符和普通字符"><span class="post-toc-number">1.</span> <span class="post-toc-text">元字符和普通字符</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#字符类"><span class="post-toc-number">2.</span> <span class="post-toc-text">字符类</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#字符类的范围"><span class="post-toc-number">3.</span> <span class="post-toc-text">字符类的范围</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#字符类的反义"><span class="post-toc-number">4.</span> <span class="post-toc-text">字符类的反义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#转义字符类"><span class="post-toc-number">5.</span> <span class="post-toc-text">转义字符类</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#重复"><span class="post-toc-number">6.</span> <span class="post-toc-text">重复</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#指定重复次数范围"><span class="post-toc-number">7.</span> <span class="post-toc-text">指定重复次数范围</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#非贪婪匹配"><span class="post-toc-number">8.</span> <span class="post-toc-text">非贪婪匹配</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#选择匹配"><span class="post-toc-number">9.</span> <span class="post-toc-text">选择匹配</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#元组"><span class="post-toc-number">10.</span> <span class="post-toc-text">元组</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#换行符"><span class="post-toc-number">11.</span> <span class="post-toc-text">换行符</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#文本分界"><span class="post-toc-number">12.</span> <span class="post-toc-text">文本分界</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#捕获元组"><span class="post-toc-number">13.</span> <span class="post-toc-text">捕获元组</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#替换"><span class="post-toc-number">14.</span> <span class="post-toc-text">替换</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#反向引用"><span class="post-toc-number">15.</span> <span class="post-toc-text">反向引用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用正则表达式编程"><span class="post-toc-number">16.</span> <span class="post-toc-text">使用正则表达式编程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#注意事项"><span class="post-toc-number">17.</span> <span class="post-toc-text">注意事项</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#输入验证"><span class="post-toc-number">18.</span> <span class="post-toc-text">输入验证</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">19.</span> <span class="post-toc-text">总结</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        There is nothing we can complain about, it all depends on what we do.
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="/" target="_blank">HOME</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.gitee.com" target="_blank">gitee</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.coding.net" target="_blank">coding</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Charlie &copy; 2018
+            </span>
+        		
+           	
+            
+            
+            
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lichaoyu.com/2018/08/22/2018-08-22-正则表达式总结/&title=《正则表达式总结》 — Born To Do&pic=http://lichaoyu.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lichaoyu.com/2018/08/22/2018-08-22-正则表达式总结/&title=《正则表达式总结》 — Born To Do&source=There is nothing you can complain about, it all depends on human effort." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lichaoyu.com/2018/08/22/2018-08-22-正则表达式总结/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《正则表达式总结》 — Born To Do&url=http://lichaoyu.com/2018/08/22/2018-08-22-正则表达式总结/&via=http://lichaoyu.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lichaoyu.com/2018/08/22/2018-08-22-正则表达式总结/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACqklEQVR42u3aMW7DQAwEQP//0w6QzgisLMmjlQCjyoWlu1GhI5Z8POLr+X39/J3851m8rp/w2Ljw8PDwWlvPF3t37/VW3j35+jnJKtdPxsPDw9vjJR/6a3zynISa85K18PDw8O7lVZev3pVUxXh4eHj/i5fHAZNPf7XgxsPDw7uLlxfNpzbRixsWsxY8PDy8mDdpgN31+0P9PTw8PLxiVz05BvIYNzk28lWi3eLh4eEt8PJlekMGefFdfR15+Y6Hh4d3ltcLRqsRw6TZ1htQeDn38PDw8JZ5ByLRYrncWyV6xXh4eHgf4SVFbbX1NSm+q7UxHh4e3jZvEsvmsGp/qlqCNzt4eHh4eC1e7xNfDWSr1FNFPB4eHt4eLy9584Ohenj0RlF/CY7x8PDwFni95fPGVRJqJEdCPmoQ3YyHh4c34E1GVJN4okqal/LRuYeHh4c34FUD1mpp2xvkOjW+gIeHh7fBq35we4Vy77BJqIVxATw8PLyjvOoYU29QYFJ89wpuPDw8vA1eXuZWQ9sevrpuYRU8PDy8Q7xJVDofF0jW7Y0gvJx7eHh4eEd51dZUMuQ0GRrIMYXAFw8PD2+BNxmZ6gWyeTQ8P2bw8PDw9ninevG9zVUL92MkPDw8vCKvt/D8OEmGsfKwAw8PD+/zvFHfrFUu915iNWjGw8PD2+BNGk6T7nyVkb/ut+NWeHh4eId4zVI1iG7zT39Oynfycu7h4eHhrfHyIrgH6A1O5TFuYdwKDw8Pb8Drtb4mIwW94a1eOIKHh4e3x8vD1sl2kwAiB+fHCR4eHt4ebxIoTNpUk8ZY9E88PDy8W3mTw2B+V3XPeHh4eH+H14sMqrw8RI6yajw8PLwFXq/ATTbRC3wn/8TDw8Pb5k0aYJMPevWFjoYD8PDw8M7wvgAkDgMn7/ZR/wAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.2.8"></script>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.2.8"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.2.8"></script>
+
+<!-- third-party -->
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.2.8"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+    <script>
+    (function() {
+        var OriginTitile = document.title, titleTime;
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                document.title = 'Where are you?';
+                clearTimeout(titleTime);
+            } else {
+                document.title = 'Welcome back!';
+                titleTime = setTimeout(function() {
+                    document.title = OriginTitile;
+                },2000);
+            }
+        });
+    })();
+</script>
+
+
+    
+</body>
+</html>
